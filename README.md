@@ -1,109 +1,87 @@
 📊 Churn Analysis Project
 📌 Overview
 
-This project is an end-to-end churn analysis pipeline built using SQL Server Management Studio 21 (SSMS 21), Power BI, and Python.
-The goal is to understand customer churn patterns, create interactive dashboards, and build predictive insights to help businesses reduce churn.
+This is an end-to-end churn analysis pipeline built using SQL Server Management Studio 21 (SSMS 21), Power BI, and Python.
+The project helps businesses understand churn patterns, build predictive insights, and design proactive strategies to reduce customer churn.
 
-It covers:
+🎯 Problem Statement
 
-ETL and data cleaning in SQL Server (SSMS 21)
+Customer churn — when customers stop using a service — leads to significant revenue loss. Businesses need to:
 
-Data transformation and visualization in Power BI
+Identify customers at risk of leaving
 
-Exploratory Data Analysis (EDA) and predictive modeling in Python
+Understand key churn drivers
 
-🔹 Problem Statement
+Take proactive actions to retain them
 
-Customer churn (when customers stop using a service) causes significant revenue loss. Businesses need to:
+This project provides a data-driven churn analysis solution by combining SQL, Power BI, and Python.
 
-Identify which customers are likely to leave
+🛠️ Tech Stack
 
-Understand factors driving churn
+SQL Server Management Studio 21 (SSMS 21): ETL, data cleaning, preprocessing, and view creation
 
-Take proactive measures to retain customers
+Power BI: Data transformation, modeling, and interactive dashboards
 
-This project demonstrates a data-driven solution using SQL, Power BI, and Python to analyze churn, visualize insights, and predict at-risk customers.
+Python (Pandas, NumPy, Matplotlib, Scikit-learn): EDA 
 
-🔹 Tech Stack
+Machine Learning Algorithm - Random Forests Regression
 
-SQL Server Management Studio 21 (SSMS 21) → ETL, data cleaning, preprocessing, and view creation
+GitHub: Version control and project hosting
 
-Power BI → Data transformation, modeling, interactive dashboards
+🔄 Project Workflow
+1️⃣ SQL Server (ETL & Data Cleaning)
 
-Python (Pandas, NumPy, Matplotlib, Scikit-learn) → EDA and churn prediction
+Imported raw customer dataset into SSMS 21
 
-GitHub → Version control and project hosting
+Cleaned missing values, duplicates, and invalid entries
 
-🔹 Project Workflow
-1. SQL Server Management Studio 21 (ETL & Data Cleaning)
+Created staging & production tables for analysis
 
-Imported raw customer dataset into SSMS 21.
+Built views to separate churned vs. retained customers
 
-Cleaned missing values, duplicates, and invalid entries.
+2️⃣ Power BI (Transformations & Dashboards)
 
-Created staging and production tables for analysis.
+Transformations (Power Query):
 
-Built views for Churned vs Stayed customers.
+prod_Churn Table → Added Churn Status flag, Monthly Charge ranges
 
-2. Power BI (Transformations & Dashboards)
-🔹 Power Query Transformations
+mapping_AgeGrp Table → Categorized age into groups (<20, 20–35, 36–50, >50)
 
-prod_Churn Table:
+mapping_TenureGrp Table → Grouped tenure into <6M, 6–12M, 12–18M, 18–24M, >=24M
 
-Churn Status → 1 if Customer_Status = "Churned" else 0
+prod_Services Table → Unpivoted services, renamed fields for clarity
 
-Monthly Charge Range → Grouped as <20, 20–50, 50–100, >100
-
-mapping_AgeGrp Table:
-
-Age groups: <20, 20–35, 36–50, >50 with sorting column
-
-mapping_TenureGrp Table:
-
-Tenure groups: <6M, 6–12M, 12–18M, 18–24M, >=24M with sorting
-
-prod_Services Table:
-
-Unpivoted service-related columns
-
-Renamed Attribute → Services and Value → Status
-
-🔹 DAX Measures
-
-Summary Page:
+Key DAX Measures:
 
 Total Customers = COUNT(prod_Churn[Customer_ID])
+
 New Joiners = CALCULATE(COUNT(prod_Churn[Customer_ID]), prod_Churn[Customer_Status] = "Joined")
+
 Total Churn = SUM(prod_Churn[Churn Status])
+
 Churn Rate = [Total Churn] / [Total Customers]
 
+3️⃣ Python (EDA & Prediction)
 
-Churn Prediction Page:
+EDA: Correlation heatmaps, feature distributions, churn trend analysis
 
-Count Predicted Churner = COUNT(Predictions[Customer_ID]) + 0
-Title Predicted Churners = "COUNT OF PREDICTED CHURNERS : " & COUNT(Predictions[Customer_ID])
+Models: Logistic Regression, Decision Tree, and Random Forest for churn prediction
 
-3. Python (EDA & Prediction)
+Insights: Identified key drivers of churn and generated retention strategies
 
-Conducted Exploratory Data Analysis: correlation heatmaps, feature distribution, and churn patterns.
+📊 Dashboard Preview
 
-Built predictive models (Logistic Regression, Decision Tree) to identify at-risk customers.
+Summary Page: KPIs, churn trends, customer demographics(https://github.com/Ahadxcode/Churn-Analysis-Project/blob/main/ChurnAnalysisPrediction.png)
 
-Generated insights to improve retention strategies.
+Prediction Page: Predicted churners count with visualizations (https://github.com/Ahadxcode/Churn-Analysis-Project/blob/main/ChurnAnalysisSummary.png)
 
-🔹 Dashboard Preview
+🚀 Future Improvements
 
-Summary Page: KPIs, churn trends, demographics
+Deploy ML model as an API for real-time predictions
 
-Prediction Page: Predicted churners count and visualization
+Automate ETL pipeline using Airflow / SSIS
 
-🔹 Future Improvements
-
-Deploy predictive model as an API for real-time churn prediction
-
-Automate ETL pipeline using Airflow or SSIS
-
-Integrate live database connections for dashboard refresh
+Enable live database connections for dashboard refresh
 
 👨‍💻 Developed By
 
