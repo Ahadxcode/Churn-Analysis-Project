@@ -22,9 +22,9 @@ SQL Server Management Studio 21 (SSMS 21): ETL, data cleaning, preprocessing, an
 
 Power BI: Data transformation, modeling, and interactive dashboards
 
-Python (Pandas, NumPy, Matplotlib, Scikit-learn): EDA 
+Python (Pandas, NumPy, Matplotlib, Scikit-learn): Exploratory Data Analysis (EDA)
 
-Machine Learning Algorithm - Random Forests Regression
+Machine Learning (Random Forest Classifier): Predictive modeling for churn analysis
 
 GitHub: Version control and project hosting
 
